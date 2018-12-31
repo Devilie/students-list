@@ -1,11 +1,12 @@
 <div class="create_student">
   <h2>Create student record</h2>
-  <form class="create_student_form" (ngSubmit)="create(); creatStudForm.reset()" #creatStudForm="ngForm">
+  <button class="open_form" *ngIf="!open_create_form" (click)="click()">Create</button>
+  <form class="create_student_form" *ngIf="open_create_form" (ngSubmit)="onSubmit($event); creatStudForm.reset()" #creatStudForm="ngForm">
     <input type="text" placeholder="Name" name="first_name" [(ngModel)]="newStudent.first_name" required />
     <input type="text" placeholder="Surname" name="last_name" [(ngModel)]="newStudent.last_name" required />
     <input type="date" placeholder="Birthday" name="birth_date" [(ngModel)]="newStudent.birth_date" required />
     <input type="tel" placeholder="Phone number" name="phone" [(ngModel)]="newStudent.phone" required />
     <input type="email" placeholder="E-mail address" name="email" [(ngModel)]="newStudent.email" required />
-    <button type="submit" [disabled]="creatStudForm.form.invalid">Add</button>
+    <button class="submit_btn" type="submit" [disabled]="creatStudForm.form.invalid">Add</button>
   </form>
 </div>

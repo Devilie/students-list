@@ -1,8 +1,7 @@
-.list_of_students{
-  border-bottom: 2px solid rgb(212, 212, 212);
-}
+
 .students_list_table {
     border: 1px solid darkgrey;
+    margin-bottom: 20px;
     padding: 10px 5px;
     border-radius: 5px;
   }
@@ -13,7 +12,7 @@
     text-align: center;
   }
   
-  .students_list_table .student_record td input[type="button"] {
+ .student_record td input[type="button"] {
     display: block;
     margin: 5px;
     width: 60px;

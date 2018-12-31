@@ -36,8 +36,8 @@ export const students= [
     "birth_date": "1997-06-27",
     "phone": "1-555-555-3552",
     "email": "Andy.Aikinson@powerschool.com",
-    "created": "01-07-2016",
-    "changed": "21-09-2017"
+    "created": "2016-07-01",
+    "changed": "2017-09-21"
   },
   {
     "id": 5,

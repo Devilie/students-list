@@ -1,4 +1,4 @@
-<div class="change_record" *ngIf="changing">
+<div class="change_record" >
   <h2>Change student record</h2>
   <form class="change_record_form" (ngSubmit)="onSaveChanges(); creatStudForm.reset()" #changeRecForm="ngForm">
     <input type="text" placeholder="Name" name="first_name" [(ngModel)]="changeStud.first_name" required />

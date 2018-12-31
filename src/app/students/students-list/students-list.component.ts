@@ -1,24 +1,33 @@
-import { Component, Output, Input, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { Student } from '../../shared/Student';
-
+import { StudentService} from '../../shared/student.service';
 @Component({
   moduleId: module.id,
   selector: 'app-students-list',
   templateUrl: 'students-list.component.html',
   styleUrls: ['students-list.component.css']
 })
-export class StudentsListComponent {
-  @Input() students: Student[];
+export class StudentsListComponent implements OnInit{
+ students: Student[];
 
-  @Output() delete: EventEmitter<Student> = new EventEmitter();
-  @Output() change: EventEmitter<Student> = new EventEmitter();
-  @Output() changing: boolean = false;
-  onDelete(student: Student) {
-    this.delete.emit(student);
+  constructor(private studentService: StudentService){
+    this.students = [];
   }
-  onChange(student: Student) {
-    this.change.emit(student);
+  ngOnInit(){
+    this.students = this.studentService.detStudents();
+  }
+
+  
+  @Output() changing: boolean = false;
+
+  delete(student: Student) {
+    this.studentService.deleteStudent(student);
+  };
+
+  change(student: Student) {
+this.studentService.changeStudent(student);
+    this.changing = true;
   }
 
 }
