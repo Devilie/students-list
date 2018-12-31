@@ -17,20 +17,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr class="student_record" *ngFor="let student of students">
-          <td>{{student.id}}</td>
-          <td>{{student.first_name}}</td>
-          <td>{{student.last_name}}</td>
-          <td>{{student.birth_date}}</td>
-          <td>{{student.phone}}</td>
-          <td>{{student.email}}</td>
-          <td>{{student.created}}</td>
-          <td>{{student.changed}}</td>
-          <td>
-            <input type="button" (click)="delete(student)" value="Delete">
-            <input type="button" (click)="change(student)" value="Change">
-          </td>
-        </tr>
+        <app-student-item *ngFor="let student of students" [student]="student" (delete)="onDelete($event)" (change)="onChange($event)"></app-student-item>
       </tbody>
     </table>
   </div>

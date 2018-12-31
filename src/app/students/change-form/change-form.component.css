@@ -1,0 +1,11 @@
+.change_record {
+  border-bottom: 2px solid rgb(212, 212, 212);
+}
+
+.change_record .change_record_form {
+  margin-bottom: 20px;
+}
+
+.change_record .change_record_form button {
+  width: 50px;
+}

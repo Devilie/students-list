@@ -6,6 +6,6 @@
     <input type="date" placeholder="Birthday" name="birth_date" [(ngModel)]="newStudent.birth_date" required />
     <input type="tel" placeholder="Phone number" name="phone" [(ngModel)]="newStudent.phone" required />
     <input type="email" placeholder="E-mail address" name="email" [(ngModel)]="newStudent.email" required />
-    <input type="submit" [disabled]="creatStudForm.form.invalid" value="Add">
+    <button type="submit" [disabled]="creatStudForm.form.invalid">Add</button>
   </form>
 </div>

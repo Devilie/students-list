@@ -1,0 +1,25 @@
+.create_student {
+  border-bottom: 2px solid rgb(212, 212, 212);
+}
+
+.create_student .create_student_form {
+  border: 1px solid darkgrey;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  width: 50%;
+}
+
+.create_student .create_student_form input {
+  display: block;
+  margin: 20px auto;
+  width: 300px;
+  height: 20px;
+}
+
+.create_student .create_student_form button {
+  display: block;
+  margin: 20px auto;
+  width: 60px;
+  height: 23px;
+
+}

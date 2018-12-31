@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
+  moduleId: module.id,
   selector: 'app-change-form',
-  templateUrl: './change-form.component.html',
-  styleUrls: ['./change-form.component.css']
+  templateUrl: 'change-form.component.html',
+  styleUrls: ['change-form.component.css']
 })
-export class ChangeFormComponent implements OnInit {
+export class ChangeFormComponent {
+  changeStud = {
+    id: NaN, first_name: '', last_name: '', birth_date: '', phone: '', email: '', created: '', changed: ''
+  };
 
-  constructor() { }
+  @Output() saveChange: EventEmitter<{}> = new EventEmitter();
 
-  ngOnInit() {
+  onSaveChange(){
+    this.saveChange.emit(this.changeStud);
   }
 
 }

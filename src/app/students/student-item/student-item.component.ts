@@ -1,15 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Student } from '../../shared/Student';
 
 @Component({
+  moduleId: module.id,
   selector: 'app-student-item',
-  templateUrl: './student-item.component.html',
-  styleUrls: ['./student-item.component.css']
+  templateUrl: 'student-item.component.html',
+  styleUrls: ['student-item.component.css']
 })
-export class StudentItemComponent implements OnInit {
+export class StudentItemComponent {
 
-  constructor() { }
+  @Input() student: Student;
 
-  ngOnInit() {
+  @Output() delete = new EventEmitter();
+  @Output() change = new EventEmitter();
+
+  onDelete() {
+    this.delete.emit(this.student);
   }
 
+  onChange(){
+    this.change.emit(this.student);
+  }
+  
 }
