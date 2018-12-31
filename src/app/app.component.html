@@ -4,49 +4,8 @@
   </h1>
 </header>
 <main>
-  <section class="create_student">
-    <h2>Create student record</h2>
-    <form class="create_student_form">
-      <input type="text" placeholder="Name" #studentName />
-      <input type="text" placeholder="Surname" #studentSurname />
-      <input type="date" placeholder="Birthday" #birth />
-      <input type="tel" placeholder="Phone number" #phone />
-      <input type="email" placeholder="E-mail address" #email />
-      <input type="submit" value="Add" (click)="create($event, studentName.value, studentSurname.value, birth.value, phone.value, email.value)">
-    </form>
-  </section>
-  <section class="list_of_students" *ngIf="students.length">
-    <h2>Students record list</h2>
-    <table class="students_list_table">
-      <thead>
-        <tr>
-          <td>Id</td>
-          <td>Name</td>
-          <td>Surname</td>
-          <td>Date of birth</td>
-          <td>Phone</td>
-          <td>Email</td>
-          <td>Registration date</td>
-          <td>Last changes</td>
-          <td></td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="student_record" *ngFor="let student of students">
-          <td>{{student.id}}</td>
-          <td>{{student.first_name}}</td>
-          <td>{{student.last_name}}</td>
-          <td>{{student.birth_date}}</td>
-          <td>{{student.phone}}</td>
-          <td>{{student.email}}</td>
-          <td>{{student.created}}</td>
-          <td>{{student.changed}}</td>
-          <td>
-            <input type="button" (click)="delete(student)" value="Delete">
-            <input type="button" (click)="change(student)" value="Change">
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
+  <app-add-form></app-add-form>
+  <app-change-form></app-change-form>
+  <app-students-list></app-students-list>
+  
 </main>

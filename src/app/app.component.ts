@@ -16,38 +16,37 @@ const students: Student[] = [
     "id": 1,
     "first_name": "Brandon",
     "last_name": "Adair",
-    "birth_date": "13-12-1998",
+    "birth_date": "1998-12-13",
     "phone": "1-555-555-3612",
     "email": "Brandon.Adair@powerschool.com",
-    "created": "12-08-2016",
-    "changed": "13-09-2017"
+    "created": "2016-08-12",
+    "changed": "2017-09-13"
   },
   {
     "id": 2,
     "first_name": "Corby",
     "last_name": "Adams",
-    "birth_date": "02-10-2000",
+    "birth_date": "2000-10-02",
     "phone": "1-555-555-2892",
     "email": "Corby.Adams@powerschool.com",
-    "created": "15-07-2017",
-    "changed": "15-07-2017"
+    "created": "2017-07-15",
+    "changed": "2017-07-15"
   },
   {
     "id": 3,
     "first_name": "Emmy",
-    "last_name": "Ahlberg"
-    ,
-    "birth_date": "21-11-2000",
+    "last_name": "Ahlberg",
+    "birth_date": "2000-11-21",
     "phone": "1-555-555-3558",
     "email": "Emmy.Ahlberg@powerschool.com",
-    "created": "02-07-2017",
-    "changed": "02-07-2017"
+    "created": "2017-07-02",
+    "changed": "2017-07-02"
   },
   {
     "id": 4,
     "first_name": "Andy",
     "last_name": "Aikinson",
-    "birth_date": "27-06-1997",
+    "birth_date": "1997-06-27",
     "phone": "1-555-555-3552",
     "email": "Andy.Aikinson@powerschool.com",
     "created": "01-07-2016",
@@ -57,64 +56,61 @@ const students: Student[] = [
     "id": 5,
     "first_name": "Scott",
     "last_name": "Alfonso",
-    "birth_date": "17-11-1999",
+    "birth_date": "1999-11-17",
     "phone": "1-555-555-2569",
     "email": "Scott.Alfonso@powerschool.com",
-    "created": "20-10-2017",
-    "changed": "20-10-2017"
+    "created": "2017-10-20",
+    "changed": "2017-10-20"
   },
   {
     "id": 6,
     "first_name": "Victor",
     "last_name": "Allen",
-    "birth_date": "16-01-1999",
+    "birth_date": "1999-01-16",
     "phone": "1-555-555-3567",
     "email": "Victor.Allen@powerschool.com",
-    "created": "21-10-2017",
-    "changed": "21-10-2017"
+    "created": "2017-10-21",
+    "changed": "2017-10-21"
   },
   {
     "id": 7,
     "first_name": "Alfred",
     "last_name": "Allred",
-    "birth_date": "02-05-1999",
+    "birth_date": "1999-05-02",
     "phone": "1-555-555-2209",
     "email": "Alfred.Allred@powerschool.com",
-    "created": "16-08-2017",
-    "changed": "16-08-2017"
+    "created": "2017-08-16",
+    "changed": "2017-08-16"
   },
   {
     "id": 8,
     "first_name": "Christopher",
     "last_name": "Allred",
-    "birth_date": "21-10-1999",
+    "birth_date": "1999-10-21",
     "phone": "1-555-555-3555",
     "email": "Christopher.Allred@powerschool.com",
-    "created": "16-08-2017",
-    "changed": "16-08-2017"
-
+    "created": "2017-08-16",
+    "changed": "2017-08-16"
   },
   {
     "id": 9,
     "first_name": "Jacee",
     "last_name": "Allred",
-    "birth_date": "28-03-1998",
+    "birth_date": "1998-03-28",
     "phone": "1-555-555-1726",
     "email": "Jacee.Allred@powerschool.com",
-    "created": "15-09-2016",
-    "changed": "15-09-2016"
-
+    "created": "2016-09-15",
+    "changed": "2016-09-15"
   },
   {
     "id": 10,
     "first_name": "Harold",
     "last_name": "Almanza",
-    "birth_date": "19-08-1999",
+    "birth_date": "1999-08-19",
     "phone": "1-555-555-3553",
     "email": "Harold.Almanza@powerschool.com",
-    "created": "08-07-2017",
-    "changed": "08-07-2017"
-
+    "created": "2017-07-08",
+    "changed": "2017-07-08"
   }
 ];
 
@@ -126,13 +122,33 @@ const students: Student[] = [
 export class AppComponent {
   title: string = 'Srudents List';
   students: Student[] = students;
-  create(event: Event, name: string, surname: string, bith: string, phone: string, email: string) {
-    event.preventDefault();
+  changing: boolean = false;
+  newStudent: {
+    first_name: string,
+    last_name: string,
+    birth_date: string,
+    phone: string,
+    email: string
+  } = {
+      first_name: '', last_name: '', birth_date: '', phone: '', email: ''
+    };
+  changeStud: Student = {
+    id: NaN, first_name: '', last_name: '', birth_date: '', phone: '', email: '', created: '', changed: ''
+  };
+  create() {
     let date: string = new Date().toDateString();
 
-    let student: Student = new Student(this.students.length, name, surname, bith, phone, email, date, date);
+    let student: Student = new Student(this.students.length,
+      this.newStudent.first_name,
+      this.newStudent.last_name,
+      this.newStudent.birth_date,
+      this.newStudent.phone,
+      this.newStudent.email, date, date);
 
     this.students.push(student);
+    this.newStudent = {
+      first_name: '', last_name: '', birth_date: '', phone: '', email: ''
+    };
   };
 
   delete(student: Student) {
@@ -147,6 +163,29 @@ export class AppComponent {
   };
 
   change(student: Student) {
-    console.log('change', student.id);
+    this.changing = true;
+    this.changeStud = {
+      id: student.id, first_name: student.first_name, last_name: student.last_name, birth_date: student.birth_date,
+      phone: student.phone, email: student.email, created: student.created, changed: student.changed
+    };
+  };
+
+  saveChanges() {
+    let date: string = new Date().toDateString();
+
+    this.changeStud.changed = date;
+
+    for (let stud of this.students) {
+      console.log(stud);
+      if (stud.id === this.changeStud.id) {
+        stud = this.changeStud;
+      }
+      console.log(stud);
+    }
+
+    this.changeStud = {
+      id: NaN, first_name: '', last_name: '', birth_date: '', phone: '', email: '', created: '', changed: ''
+    };
+    this.changing = false;
   };
 }
